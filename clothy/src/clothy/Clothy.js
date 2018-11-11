@@ -10,6 +10,7 @@ class Clothy extends Component {
 
         this.changeFormValue = this.changeFormValue.bind(this);
         this.changeFormValueCouleur = this.changeFormValueCouleur.bind(this);
+        this.changeFormValuePosition = this.changeFormValuePosition.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         const config = {
             apiKey: "AIzaSyCnGZv18P30Fx24q5H0mx2LP3S5vJuH23M",
@@ -27,6 +28,7 @@ class Clothy extends Component {
             vetement: "",
             value: "",
             valueCouleur: "",
+            valuePosition: "",
         
             
           };
@@ -70,6 +72,12 @@ class Clothy extends Component {
             valueCouleur: event.target.value
         })
     }
+    changeFormValuePosition(event){
+        console.log(event.target.value)
+        this.setState({
+            valuePosition: event.target.value
+        })
+    }
     
     handleSubmit(e){
         e.preventDefault();
@@ -77,11 +85,14 @@ class Clothy extends Component {
         const item = {
             name: this.state.value,
             couleur: this.state.valueCouleur,
+            position: this.state.valuePosition,
 
         }
         itemsRef.push(item);
         this.setState({
-            value: ""
+            value: "",
+            valueCouleur: "",
+            valuePosition: "",
         })
     }
     
@@ -92,7 +103,7 @@ class Clothy extends Component {
                 
                 <div className="navbar-brand navbar-light navbar-expand-lg">
                 </div>
-                
+
                <form onSubmit={this.handleSubmit} className="form-inline center-block">
 
 
@@ -108,14 +119,21 @@ class Clothy extends Component {
                     </label>
                     <input type="text" placeholder="exemple: Bleu" className="form-control" value={this.state.valueCouleur} onChange={this.changeFormValueCouleur} />
                   
-                  
+                <label className="form-control">Position vetement: </label>
+                <select className="form-control" id="exampleFormControlInput1" value={this.state.valuePosition} onChange={this.changeFormValuePosition}>
+                    <option>Tête</option>
+                    <option>Torse</option>
+                    <option>Bas</option>
+                    <option>Pied</option>
+
+                </select>
             </form>
             
             <div>
                 <div>
                     <h3>Ma garde robe: </h3>
                     {Object.values(this.state.vetement).map(object => {
-                        return(<div key={object.name}>  Vetement: {object.name} Couleur: {object.couleur} </div>
+                        return(<div key={object.name}>  Vetement: {object.name} Couleur: {object.couleur} Position: {object.position} </div>
                             )
                         
                         
