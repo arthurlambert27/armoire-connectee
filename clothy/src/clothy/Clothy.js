@@ -41,15 +41,7 @@ class Clothy extends Component {
         });
         console.log(this.state.vetement)
 
-        /*
-        const projects = Object.values(this.state.vetement).map( project =>
-            <div className="Project">
-                <h3>{project}</h3>
-            </div>
-        )
-        this.setState({
-            afficher: projects
-        })*/
+        
       });
         
     }
