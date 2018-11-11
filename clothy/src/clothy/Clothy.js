@@ -20,7 +20,7 @@ class Clothy extends Component {
         
         firebase.initializeApp(config);
         this.state = {
-            bonjour: "2"
+            vetement: ""
         
             
           };
@@ -40,15 +40,16 @@ class Clothy extends Component {
             vetement: snapshot.val()
         });
         console.log(this.state.vetement)
-        
-        const projects = this.state.vetement.map( project =>
+
+        /*
+        const projects = Object.values(this.state.vetement).map( project =>
             <div className="Project">
                 <h3>{project}</h3>
             </div>
         )
         this.setState({
             afficher: projects
-        })
+        })*/
       });
         
     }
@@ -81,7 +82,13 @@ class Clothy extends Component {
             
             <div>
                 <div>
-                    
+                    {Object.values(this.state.vetement).map(object => {
+                        return(<div key={object.name}>  {object.name} </div>
+                            )
+                        
+                        
+                        }
+                    )}
                 </div>
             </div>
                
