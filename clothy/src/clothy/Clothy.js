@@ -7,6 +7,8 @@ class Clothy extends Component {
         this.state = {
             
         }
+
+        this.changeFormValue = this.changeFormValue.bind(this);
         const config = {
             apiKey: "AIzaSyCnGZv18P30Fx24q5H0mx2LP3S5vJuH23M",
             authDomain: "clothy-a191a.firebaseapp.com",
@@ -20,7 +22,9 @@ class Clothy extends Component {
         
         firebase.initializeApp(config);
         this.state = {
-            vetement: ""
+            vetement: "",
+            value: ""
+            
         
             
           };
@@ -52,7 +56,12 @@ class Clothy extends Component {
         this.actualiserBase()
     };
     
-    
+    changeFormValue(event){
+        console.log(event.target.value)
+        this.setState({
+            value: event.target.value
+        })
+    }
     
     
     render(){
@@ -66,7 +75,7 @@ class Clothy extends Component {
                   <label className="form-control">
                     Nom du vetement:
                     </label>
-                    <input type="text" className="form-control" />
+                    <input type="text" className="form-control" value={this.state.value} onChange={this.changeFormValue} />
                     <button className="btn btn-primary">Créer un vetement</button>
                   
                   
