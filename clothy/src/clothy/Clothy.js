@@ -134,33 +134,40 @@ class Clothy extends Component {
     
     render(){
         if (this.state.user === null){
-            return(<button onClick={this.login}> Log In</button>)
+            return(<button onClick={this.login}>Se connecter</button>)
         }
         else{
         return(
 
             <div>
-                <button onClick={this.logout}>Deconection</button>
+                <div>
+                    <img src={this.state.user.photoURL} height="50" width="50" alt="profile"/>
+                    <h3> Bonjour {this.state.user.displayName} </h3>
+                    
+                </div>
+                <button onClick={this.logout}>Se deconnecter</button>
                 
                 
                 <div className="navbar-brand navbar-light navbar-expand-lg">
                 </div>
 
                <form onSubmit={this.handleSubmit} className="form-inline center-block">
-
+                 <div class="form-group">
 
                   <label className="form-control">
                     Nom du vetement:
                     </label>
                     <input type="text" placeholder="exemple: Jeans" className="form-control" value={this.state.value} onChange={this.changeFormValue} />
-                    <button className="btn btn-primary">Créer un vetement</button>
+                    
+                    </div>
 
-
+                 <div class="form-group">
                 <label className="form-control">
                     Couleur du Vetement::
                     </label>
                     <input type="text" placeholder="exemple: Bleu" className="form-control" value={this.state.valueCouleur} onChange={this.changeFormValueCouleur} />
-                  
+                  </div>
+
                 <label className="form-control">Position vetement: </label>
                 <select className="form-control" id="exampleFormControlInput1" value={this.state.valuePosition} onChange={this.changeFormValuePosition}>
                     <option>Tête</option>
@@ -172,7 +179,9 @@ class Clothy extends Component {
 
                 <label className="form-control">Lien vers l'image</label>
                 <input type="text" placeholder="Lien ici" className="form-control" value={this.state.valueImage} onChange={this.changeFormValueImage} />
+                <button className="btn btn-primary">Créer un vetement</button>
             </form>
+
             
             <div>
                 <div>
