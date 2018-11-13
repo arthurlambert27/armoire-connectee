@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import * as firebase from 'firebase';
+import firebase, { auth, provider } from './firebase.js';
 
 class Clothy extends Component {
     constructor(){
@@ -8,31 +8,31 @@ class Clothy extends Component {
             
         }
 
+        
+
+        this.login = this.login.bind(this)
+        this.logout = this.logout.bind(this)
+
         this.changeFormValue = this.changeFormValue.bind(this);
         this.changeFormValueCouleur = this.changeFormValueCouleur.bind(this);
         this.changeFormValuePosition = this.changeFormValuePosition.bind(this);
         this.changeFormValueImage = this.changeFormValueImage.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        var config = {
-    apiKey: "AIzaSyAF9pQwstuT4w4jzfA_NnlnGUtap4uQV4Y",
-    authDomain: "amoireko-ed478.firebaseapp.com",
-    databaseURL: "https://amoireko-ed478.firebaseio.com",
-    projectId: "amoireko-ed478",
-    storageBucket: "amoireko-ed478.appspot.com",
-    messagingSenderId: "120206565215"
-  };
         
-        firebase.initializeApp(config);
+        
+        
         this.state = {
             vetement: "",
             value: "",
             valueCouleur: "",
             valuePosition: "",
             valueImage: "",
+            user: null,
         
             
           };
+
         
         
        
@@ -60,6 +60,34 @@ class Clothy extends Component {
     componentWillMount(){
         this.actualiserBase()
     };
+
+    componentDidMount() {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({ user });
+                } 
+            });
+        };
+    login(){
+        auth.signInWithPopup(provider)
+            .then((result) =>{
+                const user = result.user
+                this.setState({
+                    user
+                })
+                console.log(this.state.user)
+            })
+
+    }
+
+    logout(){
+        auth.signOut()
+            .then(() =>{
+                this.setState({
+                    user: null,
+                })
+            })
+    }
     
     changeFormValue(event){
         console.log(event.target.value)
@@ -105,9 +133,15 @@ class Clothy extends Component {
     }
     
     render(){
+        if (this.state.user === null){
+            return(<button onClick={this.login}> Log In</button>)
+        }
+        else{
         return(
 
             <div>
+                <button onClick={this.logout}>Deconection</button>
+                
                 
                 <div className="navbar-brand navbar-light navbar-expand-lg">
                 </div>
@@ -160,7 +194,7 @@ class Clothy extends Component {
 
         )
     }
-
+}
 }
 
 
