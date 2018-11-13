@@ -11,17 +11,17 @@ class Clothy extends Component {
         this.changeFormValue = this.changeFormValue.bind(this);
         this.changeFormValueCouleur = this.changeFormValueCouleur.bind(this);
         this.changeFormValuePosition = this.changeFormValuePosition.bind(this);
+        this.changeFormValueImage = this.changeFormValueImage.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
-        const config = {
-            apiKey: "AIzaSyCnGZv18P30Fx24q5H0mx2LP3S5vJuH23M",
-            authDomain: "clothy-a191a.firebaseapp.com",
-            databaseURL: "https://clothy-a191a.firebaseio.com",
-            projectId: "clothy-a191a",
-            storageBucket: "clothy-a191a.appspot.com",
-            messagingSenderId: "464382396170"
-            
-            
-        };
+
+        var config = {
+    apiKey: "AIzaSyAF9pQwstuT4w4jzfA_NnlnGUtap4uQV4Y",
+    authDomain: "amoireko-ed478.firebaseapp.com",
+    databaseURL: "https://amoireko-ed478.firebaseio.com",
+    projectId: "amoireko-ed478",
+    storageBucket: "amoireko-ed478.appspot.com",
+    messagingSenderId: "120206565215"
+  };
         
         firebase.initializeApp(config);
         this.state = {
@@ -29,6 +29,7 @@ class Clothy extends Component {
             value: "",
             valueCouleur: "",
             valuePosition: "",
+            valueImage: "",
         
             
           };
@@ -78,6 +79,11 @@ class Clothy extends Component {
             valuePosition: event.target.value
         })
     }
+    changeFormValueImage(event){
+        this.setState({
+            valueImage: event.target.value
+        })
+    }
     
     handleSubmit(e){
         e.preventDefault();
@@ -86,6 +92,7 @@ class Clothy extends Component {
             name: this.state.value,
             couleur: this.state.valueCouleur,
             position: this.state.valuePosition,
+            image: this.state.valueImage,
 
         }
         itemsRef.push(item);
@@ -93,6 +100,7 @@ class Clothy extends Component {
             value: "",
             valueCouleur: "",
             valuePosition: "",
+            valueImage: "",
         })
     }
     
@@ -127,18 +135,24 @@ class Clothy extends Component {
                     <option>Pied</option>
 
                 </select>
+
+                <label className="form-control">Lien vers l'image</label>
+                <input type="text" placeholder="Lien ici" className="form-control" value={this.state.valueImage} onChange={this.changeFormValueImage} />
             </form>
             
             <div>
                 <div>
                     <h3>Ma garde robe: </h3>
+                    <div className="card-group">
                     {Object.values(this.state.vetement).map(object => {
-                        return(<div key={object.name}>  Vetement: {object.name} Couleur: {object.couleur} Position: {object.position} </div>
+                        return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>
                             )
                         
                         
                         }
+                    
                     )}
+                    </div>
                 </div>
             </div>
                
