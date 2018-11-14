@@ -29,8 +29,8 @@ class Clothy extends Component {
             valuePosition: "",
             valueImage: "",
             user: null,
-            synch: "False",
-            loading: "True"
+            dataLoaded: false,
+            loadingUser: true
             
           };
 
@@ -50,7 +50,7 @@ class Clothy extends Component {
             
             this.setState({
             vetement: snapshot.val(),
-            synch: "True"
+            dataLoaded: true
         });
         console.log(this.state.vetement)
 
@@ -74,13 +74,13 @@ class Clothy extends Component {
             if (user) {
                 this.setState({
                 user: user,
-                loading: "False"
+                loadingUser: false
 
                  });
                 }
             else {
                 this.setState({
-                    loading: "False"
+                    loadingUser: false
                 })
             }
                 this.actualiserBase()
@@ -157,11 +157,11 @@ class Clothy extends Component {
     }
     
     render(){
-        if (this.state.loading === "True")
+        if (this.state.loadingUser)
             return(<div>Chargement user</div>)
         else if (!this.state.user)
             return(<button onClick={this.login}>Se connecter</button>);
-        else if (!this.state.vetement && this.state.synch === "True")
+        else if (!this.state.vetement && this.state.dataLoaded)
             return(<form onSubmit={this.handleSubmit} className="form-inline center-block">
                 <div class="form-group">
 
