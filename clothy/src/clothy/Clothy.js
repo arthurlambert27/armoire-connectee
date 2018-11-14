@@ -163,33 +163,48 @@ class Clothy extends Component {
             return(<button onClick={this.login}>Se connecter</button>);
         else if (!this.state.vetement && this.state.synch === "True")
             return(<form onSubmit={this.handleSubmit} className="form-inline center-block">
-                 <div class="form-group">
+                <div class="form-group">
 
-                  <label className="form-control">
-                    Nom du vetement:
-                    </label>
-                    <input type="text" placeholder="exemple: Jeans" className="form-control" value={this.state.value} onChange={this.changeFormValue} />
+                    <label className="form-control">Nom du vetement:</label>
+                    <input type="text" 
+                        placeholder="exemple: Jeans" 
+                        className="form-control" 
+                        value={this.state.value} 
+                        onChange={this.changeFormValue} 
+                    />
                     
-                    </div>
+                </div>
 
-                 <div class="form-group">
-                <label className="form-control">
-                    Couleur du Vetement::
-                    </label>
-                    <input type="text" placeholder="exemple: Bleu" className="form-control" value={this.state.valueCouleur} onChange={this.changeFormValueCouleur} />
-                  </div>
+                <div class="form-group">
+                    <label className="form-control">Couleur du Vetement: </label>
+                    <input type="text" 
+                        placeholder="exemple: Bleu" 
+                        className="form-control" 
+                        value={this.state.valueCouleur} 
+                        onChange={this.changeFormValueCouleur} 
+                    />
+                </div>
 
                 <label className="form-control">Position vetement: </label>
-                <select className="form-control" id="exampleFormControlInput1" value={this.state.valuePosition} onChange={this.changeFormValuePosition}>
-                    <option>Tête</option>
-                    <option>Torse</option>
-                    <option>Bas</option>
-                    <option>Pied</option>
+                <select className="form-control" 
+                    id="exampleFormControlInput1" 
+                    value={this.state.valuePosition} 
+                    onChange={this.changeFormValuePosition}>
+
+                        <option>Tête</option>
+                        <option>Torse</option>
+                        <option>Bas</option>
+                        <option>Pied</option>
 
                 </select>
 
                 <label className="form-control">Lien vers l'image</label>
-                <input type="text" placeholder="Lien ici" className="form-control" value={this.state.valueImage} onChange={this.changeFormValueImage} />
+                <input type="text" 
+                    placeholder="Lien ici" 
+                    className="form-control" 
+                    value={this.state.valueImage} 
+                    onChange={this.changeFormValueImage} 
+                />
                 <button className="btn btn-primary">Créer un vetement</button>
             </form>)
         else
@@ -208,54 +223,69 @@ class Clothy extends Component {
                 </div>
 
                <form onSubmit={this.handleSubmit} className="form-inline center-block">
-                 <div class="form-group">
+                <div class="form-group">
 
-                  <label className="form-control">
-                    Nom du vetement:
-                    </label>
-                    <input type="text" placeholder="exemple: Jeans" className="form-control" value={this.state.value} onChange={this.changeFormValue} />
+                    <label className="form-control">Nom du vetement:</label>
+                    <input type="text" 
+                        placeholder="exemple: Jeans" 
+                        className="form-control" 
+                        value={this.state.value} 
+                        onChange={this.changeFormValue} 
+                    />
                     
-                    </div>
+                </div>
 
-                 <div class="form-group">
-                <label className="form-control">
-                    Couleur du Vetement::
-                    </label>
-                    <input type="text" placeholder="exemple: Bleu" className="form-control" value={this.state.valueCouleur} onChange={this.changeFormValueCouleur} />
-                  </div>
+                <div class="form-group">
+                    <label className="form-control">Couleur du Vetement: </label>
+                    <input type="text" 
+                        placeholder="exemple: Bleu" 
+                        className="form-control" 
+                        value={this.state.valueCouleur} 
+                        onChange={this.changeFormValueCouleur} 
+                    />
+                </div>
 
                 <label className="form-control">Position vetement: </label>
-                <select className="form-control" id="exampleFormControlInput1" value={this.state.valuePosition} onChange={this.changeFormValuePosition}>
-                    <option>Tête</option>
-                    <option>Torse</option>
-                    <option>Bas</option>
-                    <option>Pied</option>
+                <select className="form-control" 
+                    id="exampleFormControlInput1" 
+                    value={this.state.valuePosition} 
+                    onChange={this.changeFormValuePosition}>
+
+                        <option>Tête</option>
+                        <option>Torse</option>
+                        <option>Bas</option>
+                        <option>Pied</option>
 
                 </select>
 
                 <label className="form-control">Lien vers l'image</label>
-                <input type="text" placeholder="Lien ici" className="form-control" value={this.state.valueImage} onChange={this.changeFormValueImage} />
+                <input type="text" 
+                    placeholder="Lien ici" 
+                    className="form-control" 
+                    value={this.state.valueImage} 
+                    onChange={this.changeFormValueImage} 
+                />
                 <button className="btn btn-primary">Créer un vetement</button>
             </form>
 
             
-            <div>
-                <div>
-                    <h3>Ma garde robe: </h3>
-                    <div className="card-group">
-                    {Object.values(this.state.vetement).map(object => {
-                        return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
-                        }
-                    
-                        )}
-                    </div>
-                </div>
+            
+                
+            <h3>Ma garde robe: </h3>
+            <div className="card-group">
+                {Object.values(this.state.vetement).map(object => {
+                    return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
+                    }
+                        
+                    )}
             </div>
+                
+            
                
             </div>
 
         )
-    
+        
 }
 }
 
