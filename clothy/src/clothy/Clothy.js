@@ -344,13 +344,11 @@ class Clothy extends Component {
                     if (!this.state.valueTag)
                         return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
                     else (!!this.state.valueTag)
-                        if (object.name === this.state.valueTag)
-                            return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
-                        else if (object.couleur === this.state.valueTag)
-                            return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
-                        else if (object.position === this.state.valueTag)
-                            return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
 
+                        console.log(object.name.substr(0, this.state.valueTag.length)   +"  " + this.state.valueTag)
+                        if (object.name.substr(0, this.state.valueTag.length) === this.state.valueTag  || object.couleur.substr(0, this.state.valueTag.length) === this.state.valueTag || object.position.substr(0, this.state.valueTag.length) === this.state.valueTag)
+                            return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
+                        
 
                     }
                         
