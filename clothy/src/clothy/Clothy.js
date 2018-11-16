@@ -11,6 +11,7 @@ class Clothy extends Component {
         this.login = this.login.bind(this)
         this.logout = this.logout.bind(this)
 
+        this.changeFormValueTag = this.changeFormValueTag.bind(this)
         this.changeFormValue = this.changeFormValue.bind(this);
         this.changeFormValueCouleur = this.changeFormValueCouleur.bind(this);
         this.changeFormValuePosition = this.changeFormValuePosition.bind(this);
@@ -134,6 +135,11 @@ class Clothy extends Component {
     changeFormValueImage(event){
         this.setState({
             valueImage: event.target.value
+        })
+    }
+    changeFormValueTag(e){
+        this.setState({
+            valueTag: e.target.value
         })
     }
     //Methode appeller lors de l'enregistrement d'un vetement
@@ -326,10 +332,26 @@ class Clothy extends Component {
             
             
                 
-            <h3>Vêtement de {this.state.user.displayName} </h3>
+            <h3>Vêtement de {this.state.user.displayName} </h3> 
+            <input type="text" 
+                placeholder="Tag pour recherche un vetement. Exemple: rouge, bonnet..." 
+                className="form-control" 
+                value={this.state.tag} 
+                onChange={this.changeFormValueTag} 
+            />
             <div className="card-group">
                 {Object.values(this.state.vetement).map(object => {
-                    return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
+                    if (!this.state.valueTag)
+                        return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
+                    else (!!this.state.valueTag)
+                        if (object.name === this.state.valueTag)
+                            return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
+                        else if (object.couleur === this.state.valueTag)
+                            return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
+                        else if (object.position === this.state.valueTag)
+                            return(<div className="col-sm-3 r"><div key={object.name} className="card"  >  <img className="card-img-top" height="225" width="185" src={object.image} alt={object.name}/> <div className="card-body"><h5 className="card-title text-truncate">{object.name}</h5> <p className="card-text">  Couleur: {object.couleur} Position: {object.position}</p> </div> </div> </div>)
+
+
                     }
                         
                     )}
