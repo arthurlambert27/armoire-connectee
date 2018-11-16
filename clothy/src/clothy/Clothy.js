@@ -178,7 +178,7 @@ class Clothy extends Component {
         
                 <form onSubmit={this.handleSubmit} >
                 <h3>Enregistrer un vetement</h3>
-                <div class="form-group row">
+                <div className="form-group row">
 
                     <label className="col-sm-2 col-form-label">Nom du vetement:</label>
                     <div className="col-sm-5">
@@ -192,7 +192,7 @@ class Clothy extends Component {
                     
                 </div>
 
-                <div class="form-group row">
+                <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Couleur du Vetement: </label>
                     <div className="col-sm-5">
                         <input type="text" 
@@ -204,7 +204,7 @@ class Clothy extends Component {
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Position vetement: </label>
                     <div className="col-sm-5">
                         <select className="form-control" 
@@ -221,7 +221,7 @@ class Clothy extends Component {
                     
                 </div>
 
-                <div class="form-group row">
+                <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Lien vers l'image</label>
                     <div className="col-sm-5">
                         <input type="text" 
@@ -248,7 +248,7 @@ class Clothy extends Component {
                             <a className="navbar-brand" href="#">Hidden brand</a>
                                 <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                                     <li className="nav-item active">
-                                        <a className="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                        <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link" href="#">Link</a>
@@ -272,7 +272,7 @@ class Clothy extends Component {
                 
                 <h3>Enregistrer un vetement</h3>
                 <form onSubmit={this.handleSubmit} >
-                <div class="form-group row">
+                <div className="form-group row">
 
                     <label className="col-sm-2 col-form-label">Nom du vetement:</label>
                     <div className="col-sm-5">
@@ -286,7 +286,7 @@ class Clothy extends Component {
                     
                 </div>
 
-                <div class="form-group row">
+                <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Couleur du Vetement: </label>
                     <div className="col-sm-5">
                         <input type="text" 
@@ -298,7 +298,7 @@ class Clothy extends Component {
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Position vetement: </label>
                     <div className="col-sm-5">
                         <select className="form-control" 
@@ -315,7 +315,7 @@ class Clothy extends Component {
                     
                 </div>
 
-                <div class="form-group row">
+                <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Lien vers l'image</label>
                     <div className="col-sm-5">
                         <input type="text" 
