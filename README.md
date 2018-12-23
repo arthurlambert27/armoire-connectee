@@ -1,4 +1,4 @@
-Logiciel permettant de gérer une armoire de vetement.
+Logiciel permettant de gérer une armoire de vetements.
 
 Language: Javascript avec React
 
