@@ -1,8 +1,6 @@
-Logiciel permettant de gérer une armoire de vetements.
+# Application android en cours de création
 
-Language: Javascript avec React
-
+Logiciel permettant de gérer une armoire de vêtements.
+Application android
+Langage: Javascript avec React
 BDD: Firebase
-
-
-
